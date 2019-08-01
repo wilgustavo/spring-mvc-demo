@@ -13,6 +13,17 @@ public class Pelicula {
     private Date fechaEstreno;
     private String estatus = "Activa";
 
+    public Pelicula() {}
+
+    public Pelicula(int id, String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno) {
+        this.id = id;
+        this.titulo = titulo;
+        this.duracion = duracion;
+        this.clasificacion = clasificacion;
+        this.genero = genero;
+        this.fechaEstreno = fechaEstreno;
+    }
+
     public int getId() {
         return id;
     }
