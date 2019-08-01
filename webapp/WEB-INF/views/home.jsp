@@ -6,37 +6,35 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Bienvendio a Cineapp</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
-    <h1>Lista de películas</h1>
-    <ol>
-       <c:forEach items="${peliculas}" var="pelicula">
-           <li>${pelicula}</li>
-       </c:forEach>
-    </ol>
-
-    Tabla de películas
-    <table border="1">
-       <thead>
-           <tr>
-               <th>Id</th>
-               <th>Título</th>
-               <th>Duración</th>
-               <th>Clasificación</th>
-               <th>Género</th>
-           </tr>
-       </thead>
-       <tbody>
-       <c:forEach items="${peliculas}" var="pelicula">
-           <tr>
-               <th>${pelicula.id}</th>
-               <th>${pelicula.titulo}</th>
-               <th>${pelicula.duracion}</th>
-               <th>${pelicula.clasificacion}</th>
-               <th>${pelicula.genero}</th>
-           </tr>
-       </c:forEach>
-       </tbody>
-    </table>
+    <div class="panel panel-default">
+        <div class="panel-heading">Tabla de películas</div>
+        <div class="panel-body">
+            <table class="table table-striped table-bordered table-hover">
+               <thead>
+                   <tr>
+                       <th>Id</th>
+                       <th>Título</th>
+                       <th>Duración</th>
+                       <th>Clasificación</th>
+                       <th>Género</th>
+                   </tr>
+               </thead>
+               <tbody>
+               <c:forEach items="${peliculas}" var="pelicula">
+                   <tr>
+                       <th>${pelicula.id}</th>
+                       <th>${pelicula.titulo}</th>
+                       <th>${pelicula.duracion}</th>
+                       <th>${pelicula.clasificacion}</th>
+                       <th>${pelicula.genero}</th>
+                   </tr>
+               </c:forEach>
+               </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
