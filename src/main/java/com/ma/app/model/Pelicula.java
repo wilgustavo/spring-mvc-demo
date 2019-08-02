@@ -9,9 +9,9 @@ public class Pelicula {
     private int duracion;
     private String clasificacion;
     private String genero;
-    private String imagen = "cinema.png";
+    private String imagen;
     private Date fechaEstreno;
-    private String estatus = "Activa";
+    private String estatus;
 
     public Pelicula() {}
 
@@ -22,6 +22,73 @@ public class Pelicula {
         this.clasificacion = clasificacion;
         this.genero = genero;
         this.fechaEstreno = fechaEstreno;
+    }
+
+    public static class Builder {
+        private int id;
+        private String titulo;
+        private int duracion;
+        private String clasificacion;
+        private String genero;
+        private String imagen = "cinema.png";
+        private Date fechaEstreno;
+        private String estatus = "Activa";
+
+        public Builder id(int val) {
+            id = val;
+            return this;
+        }
+
+        public Builder titulo(String val) {
+            titulo = val;
+            return this;
+        }
+
+        public Builder duracion(int val) {
+            duracion = val;
+            return this;
+        }
+
+        public Builder clasificacion(String val) {
+            clasificacion = val;
+            return this;
+        }
+
+        public Builder genero(String val) {
+            genero = val;
+            return this;
+        }
+
+        public Builder imagen(String val) {
+            imagen = val;
+            return this;
+        }
+
+        public Builder fechaEstreno(Date val) {
+            fechaEstreno = val;
+            return this;
+        }
+
+        public Builder estatus(String val) {
+            estatus = val;
+            return this;
+        }
+
+        public Pelicula build() {
+            return new Pelicula(this);
+        }
+
+    }
+
+    private Pelicula(Builder builder) {
+        id = builder.id;
+        titulo = builder.titulo;
+        duracion = builder.duracion;
+        clasificacion = builder.clasificacion;
+        genero = builder.genero;
+        imagen = builder.imagen;
+        fechaEstreno = builder.fechaEstreno;
+        estatus = builder.estatus;
     }
 
     public int getId() {

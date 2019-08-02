@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 <body>
+    <spring:url value="/resources" var="urlPublic"></spring:url>
     <div class="panel panel-default">
         <div class="panel-heading">Tabla de películas</div>
         <div class="panel-body">
@@ -20,6 +22,9 @@
                        <th>Duración</th>
                        <th>Clasificación</th>
                        <th>Género</th>
+                       <th>Imagen</th>
+                       <th>Fecha de estreno</th>
+                       <th>Estatus</th>
                    </tr>
                </thead>
                <tbody>
@@ -30,6 +35,9 @@
                        <th>${pelicula.duracion}</th>
                        <th>${pelicula.clasificacion}</th>
                        <th>${pelicula.genero}</th>
+                       <th><img alt="${pelicula.imagen}" src="${urlPublic}/images/${pelicula.imagen}"></th>
+                       <th>${pelicula.fechaEstreno}</th>
+                       <th>${pelicula.estatus}</th>
                    </tr>
                </c:forEach>
                </tbody>
