@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <!DOCTYPE html>
 <html>
@@ -36,8 +37,17 @@
                        <th>${pelicula.clasificacion}</th>
                        <th>${pelicula.genero}</th>
                        <th><img alt="${pelicula.imagen}" src="${urlPublic}/images/${pelicula.imagen}"></th>
-                       <th>${pelicula.fechaEstreno}</th>
-                       <th>${pelicula.estatus}</th>
+                       <th><fmt:formatDate value="${pelicula.fechaEstreno}" pattern="dd/MM/yyyy"/> </th>
+                       <th>
+                           <c:choose>
+                              <c:when test="${pelicula.estatus == 'Activa'}">
+                                  <span class="label label-success">ACTIVA</span>
+                              </c:when>
+                              <c:otherwise>
+                                  <span class="label label-danger">INACTIVA</span>
+                              </c:otherwise>
+                           </c:choose>
+                       </th>
                    </tr>
                </c:forEach>
                </tbody>
