@@ -47,13 +47,7 @@ public class HomeController {
         logger.log(Level.INFO, "Buscando horarios de la pelicula {0} para la fecha {1}",
                 new Object[] { idPelicula, fecha });
 
-        String tituloPelicula = "Rapido y furioso";
-        int duracion = 136;
-        double precioEntrada = 50.0;
-
-        model.addAttribute("titulo", tituloPelicula);
-        model.addAttribute("duracion", duracion);
-        model.addAttribute("precio", precioEntrada);
+        model.addAttribute("pelicula", peliculaSevice.buscarPorId(idPelicula));
         return "detalle";
     }
 

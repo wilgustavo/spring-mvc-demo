@@ -9,7 +9,7 @@ import com.ma.app.model.Pelicula;
 import com.ma.app.util.FechaUtil;
 
 @Service
-public class PeliculaServiceImpl  implements PeliculaService{
+public class PeliculaServiceImpl implements PeliculaService {
 
     private List<Pelicula> lista;
 
@@ -20,6 +20,14 @@ public class PeliculaServiceImpl  implements PeliculaService{
     @Override
     public List<Pelicula> buscarTodas() {
         return lista;
+    }
+
+    @Override
+    public Pelicula buscarPorId(int id) {
+        return lista.stream()
+                .filter(pelicula -> pelicula.getId() == id)
+                .findAny()
+                .orElse(null);
     }
 
     private List<Pelicula> getListaEjemplo() {
