@@ -2,6 +2,9 @@ package com.ma.app.model;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
+
 public class Pelicula {
 
     private int id;
@@ -153,6 +156,16 @@ public class Pelicula {
 
     public void setEstatus(String estatus) {
         this.estatus = estatus;
+    }
+
+    @Override
+    public int hashCode() {
+        return HashCodeBuilder.reflectionHashCode(this, true);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 
     @Override

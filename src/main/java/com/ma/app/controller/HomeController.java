@@ -21,7 +21,7 @@ public class HomeController {
     private static final Logger logger = Logger.getLogger(HomeController.class.getName());
 
     @Autowired
-    private PeliculaService peliculaSevice;
+    private PeliculaService peliculaService;
 
     @GetMapping("/home")
     public String goHome() {
@@ -47,12 +47,12 @@ public class HomeController {
         logger.log(Level.INFO, "Buscando horarios de la pelicula {0} para la fecha {1}",
                 new Object[] { idPelicula, fecha });
 
-        model.addAttribute("pelicula", peliculaSevice.buscarPorId(idPelicula));
+        model.addAttribute("pelicula", peliculaService.buscarPorId(idPelicula));
         return "detalle";
     }
 
     private void buscarPeliculasPorFecha(String fecha, Model model) {
-        model.addAttribute("peliculas", peliculaSevice.buscarTodas());
+        model.addAttribute("peliculas", peliculaService.buscarTodas());
         model.addAttribute("fechas", FechaUtil.getNextDays(MAX_FECHAS));
         model.addAttribute("fechaBusqueda", fecha);
     }
