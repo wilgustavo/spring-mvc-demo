@@ -8,16 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.ma.app.model.Noticia;
 import com.ma.app.service.NoticiaService;
 
 @Controller
 @RequestMapping("/noticias")
-public class NoticiasController {
+public class NoticiaController {
 
-    private static final Logger logger = Logger.getLogger(NoticiasController.class.getName());
+    private static final Logger logger = Logger.getLogger(NoticiaController.class.getName());
 
     @Autowired
     private NoticiaService noticiaService;
@@ -28,10 +27,7 @@ public class NoticiasController {
     }
 
     @PostMapping("/save")
-    public String guardar(@RequestParam("titulo") String titulo, @RequestParam("estatus") String estatus,
-            @RequestParam("detalle") String detalle) {
-        Noticia noticia = new Noticia(titulo, detalle, estatus);
-
+    public String guardar(Noticia noticia) {
         logger.log(Level.INFO, "Se crea objeto noticia {0}", noticia);
         noticiaService.guardar(noticia);
 
