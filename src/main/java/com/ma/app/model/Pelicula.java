@@ -16,7 +16,9 @@ public class Pelicula {
     private Date fechaEstreno;
     private String estatus;
 
-    public Pelicula() {}
+    public Pelicula() {
+        this.imagen = "cinema.png";
+    }
 
     public Pelicula(int id, String titulo, int duracion, String clasificacion, String genero, Date fechaEstreno) {
         this.id = id;
