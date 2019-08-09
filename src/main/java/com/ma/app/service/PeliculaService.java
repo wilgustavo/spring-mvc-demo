@@ -8,5 +8,6 @@ public interface PeliculaService {
 
     List<Pelicula> buscarTodas();
     Pelicula buscarPorId(int id);
+    void insertar(Pelicula pelicula);
 
 }

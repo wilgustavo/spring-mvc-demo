@@ -1,6 +1,7 @@
 package com.ma.app.service;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -31,7 +32,7 @@ public class PeliculaServiceImpl implements PeliculaService {
     }
 
     private List<Pelicula> getListaEjemplo() {
-        return Arrays.asList(
+        return new LinkedList<>(Arrays.asList(
                 new Pelicula.Builder().id(1).titulo("Star Wars").duracion(128).clasificacion("B").genero("Aventura")
                         .imagen("starwars.jpg").fechaEstreno(FechaUtil.getISODate("2017-05-20")).build(),
                 new Pelicula.Builder().id(2).titulo("Power Rangers").duracion(120).clasificacion("B").genero("Aventura")
@@ -43,7 +44,12 @@ public class PeliculaServiceImpl implements PeliculaService {
                         .build(),
                 new Pelicula.Builder().id(5).titulo("Life: vida inteligente").duracion(104).clasificacion("B")
                         .genero("Drama").imagen("estreno5.png").fechaEstreno(FechaUtil.getISODate("2017-06-10"))
-                        .build());
+                        .build()));
+    }
+
+    @Override
+    public void insertar(Pelicula pelicula) {
+        lista.add(pelicula);
     }
 
 }
