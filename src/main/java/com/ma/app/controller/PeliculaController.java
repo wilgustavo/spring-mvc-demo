@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ma.app.model.Pelicula;
 import com.ma.app.service.PeliculaService;
@@ -46,13 +47,15 @@ public class PeliculaController {
     }
 
     @PostMapping("/save")
-    public String guardar(Pelicula pelicula, BindingResult result) {
+    public String guardar(Pelicula pelicula, BindingResult result, RedirectAttributes attributes) {
         if(result.hasErrors()) {
             logger.log(Level.WARNING, "Existen errores {0}", result.getAllErrors());
-        } else {
-            logger.log(Level.INFO, "Se guarda pelicula {0}", pelicula);
-            peliculaService.insertar(pelicula);
+            return "peliculas/formPelicula";
         }
-        return "peliculas/formPelicula";
+
+        logger.log(Level.INFO, "Se guarda pelicula {0}", pelicula);
+        peliculaService.insertar(pelicula);
+        attributes.addFlashAttribute("mensaje", "El registro fue guardado");
+        return "redirect:/peliculas/index";
     }
 }
