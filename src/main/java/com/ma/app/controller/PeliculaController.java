@@ -1,7 +1,5 @@
 package com.ma.app.controller;
 
-import java.io.File;
-import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.logging.Level;
@@ -25,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.ma.app.model.Pelicula;
 import com.ma.app.service.PeliculaService;
+import com.ma.app.util.ImagenUtil;
 
 @Controller
 @RequestMapping("/peliculas")
@@ -62,27 +61,13 @@ public class PeliculaController {
         }
 
         if (!multipartFile.isEmpty()) {
-            pelicula.setImagen(guardarImagen(multipartFile, request));
+            pelicula.setImagen(ImagenUtil.guardarImagen(multipartFile, request));
         }
 
         logger.log(Level.INFO, "Se guarda pelicula {0}", pelicula);
         peliculaService.insertar(pelicula);
         attributes.addFlashAttribute("mensaje", "El registro fue guardado");
         return "redirect:/peliculas/index";
-    }
-
-    private String guardarImagen(MultipartFile multipartFile, HttpServletRequest request) {
-        String nombreOriginal = multipartFile.getOriginalFilename();
-        String rutaFinal = request.getServletContext().getRealPath("/resources/images/");
-        try {
-            File imageFile = new File(rutaFinal + nombreOriginal);
-            logger.log(Level.INFO, "Guardando archivo en {0}", imageFile.getAbsolutePath());
-            multipartFile.transferTo(imageFile);
-            return nombreOriginal;
-        } catch (IOException e) {
-            logger.log(Level.SEVERE, "Error al crear archivo, mensaje: {0}", e.getMessage());
-            return null;
-        }
     }
 
 }
