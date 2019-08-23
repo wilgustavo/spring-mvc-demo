@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.ma.app.service.BannerService;
 import com.ma.app.service.PeliculaService;
 import com.ma.app.util.FechaUtil;
 
@@ -23,6 +24,9 @@ public class HomeController {
     @Autowired
     private PeliculaService peliculaService;
 
+    @Autowired
+    private BannerService bannerService;
+
     @GetMapping("/home")
     public String goHome() {
         return "home";
@@ -32,12 +36,14 @@ public class HomeController {
     public String buscar(@RequestParam("fecha") String fecha, Model model) {
         logger.log(Level.INFO, "Buscando películas para la fecha {0}", fecha);
         buscarPeliculasPorFecha(fecha, model);
+        model.addAttribute("banners", bannerService.buscarTodos());
         return "home";
     }
 
     @GetMapping("/")
     public String mostrarPrincipal(Model model) {
         buscarPeliculasPorFecha(FechaUtil.getISOString(new Date()), model);
+        model.addAttribute("banners", bannerService.buscarTodos());
         return "home";
     }
 
