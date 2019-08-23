@@ -13,7 +13,7 @@
     <meta name="author" content="">
     <title>Listado de imagenes del banner</title>
     <spring:url value="/resources" var="urlPublic"></spring:url>
-    <spring:url value="/peliculas/create" var="formPelicula"></spring:url>
+    <spring:url value="/banners/create" var="formBanner"></spring:url>
     <link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
 
@@ -27,7 +27,11 @@
 
       <h3>Listado de imagenes del Banner</h3>
 
-      <a href="#" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
+      <c:if test="${not empty mensaje}">
+          <div class="alert alert-success" role="alert">${mensaje}</div>
+      </c:if>
+
+      <a href="${formBanner}" class="btn btn-success" role="button" title="Nuevo Banner" >Nuevo</a><br><br>
 
       <div class="table-responsive">
         <table class="table table-hover table-striped table-bordered">
