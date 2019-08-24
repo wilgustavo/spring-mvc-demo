@@ -15,6 +15,7 @@ public class Pelicula {
     private String imagen;
     private Date fechaEstreno;
     private String estatus;
+    private Detalle detalle;
 
     public Pelicula() {
         this.imagen = "cinema.png";
@@ -38,6 +39,7 @@ public class Pelicula {
         private String imagen = "cinema.png";
         private Date fechaEstreno;
         private String estatus = "Activa";
+        private Detalle detalle;
 
         public Builder id(int val) {
             id = val;
@@ -79,6 +81,11 @@ public class Pelicula {
             return this;
         }
 
+        public Builder detalle(Detalle val) {
+            detalle = val;
+            return this;
+        }
+
         public Pelicula build() {
             return new Pelicula(this);
         }
@@ -94,6 +101,7 @@ public class Pelicula {
         imagen = builder.imagen;
         fechaEstreno = builder.fechaEstreno;
         estatus = builder.estatus;
+        detalle = builder.detalle;
     }
 
     public int getId() {
@@ -160,6 +168,14 @@ public class Pelicula {
         this.estatus = estatus;
     }
 
+    public Detalle getDetalle() {
+        return detalle;
+    }
+
+    public void setDetalle(Detalle detalle) {
+        this.detalle = detalle;
+    }
+
     @Override
     public int hashCode() {
         return HashCodeBuilder.reflectionHashCode(this, true);
@@ -174,7 +190,7 @@ public class Pelicula {
     public String toString() {
         return "Pelicula [id=" + id + ", titulo=" + titulo + ", duracion=" + duracion + ", clasificacion="
                 + clasificacion + ", genero=" + genero + ", imagen=" + imagen + ", fechaEstreno=" + fechaEstreno
-                + ", estatus=" + estatus + "]";
+                + ", estatus=" + estatus + ", detalle=" + detalle + "]";
     }
 
 }
