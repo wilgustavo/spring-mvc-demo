@@ -40,6 +40,15 @@
         </div>
       </spring:hasBindErrors>
       <form:form action="${urlForm}" method="post" enctype="multipart/form-data" modelAttribute="pelicula">
+
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="form-group">
+                <img class="img-rounded" src="${urlPublic}/images/${pelicula.imagen}" alt="Imagen actual de la película" width="150" height="200">
+            </div>
+          </div>
+        </div>
+
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group">
@@ -131,6 +140,8 @@
             </div>
           </div>
         </div>
+        <form:hidden path="id"/>
+        <form:hidden path="imagen" />
 
         <button type="submit" class="btn btn-danger" >Guardar</button>
       </form:form>
