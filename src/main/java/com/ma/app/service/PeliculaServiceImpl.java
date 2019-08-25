@@ -25,10 +25,7 @@ public class PeliculaServiceImpl implements PeliculaService {
 
     @Override
     public Pelicula buscarPorId(int id) {
-        return lista.stream()
-                .filter(pelicula -> pelicula.getId() == id)
-                .findAny()
-                .orElse(null);
+        return lista.stream().filter(pelicula -> pelicula.getId() == id).findAny().orElse(null);
     }
 
     private List<Pelicula> getListaEjemplo() {
@@ -50,6 +47,12 @@ public class PeliculaServiceImpl implements PeliculaService {
     @Override
     public void insertar(Pelicula pelicula) {
         lista.add(pelicula);
+    }
+
+    @Override
+    public List<String> buscarGeneros() {
+        return Arrays.asList("Accion", "Aventura", "Clasicas", "Comedia Romantica", "Drama", "Terror", "Infantil",
+                "Accion y Aventura", "Romantica", "Ciencia Ficcion");
     }
 
 }

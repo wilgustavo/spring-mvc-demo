@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
@@ -43,7 +43,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="form-group">
-              <label for="titulo">Título</label>
+              <label for="titulo">TÃ­tulo</label>
               <form:input type="text" class="form-control" path="titulo" id="titulo" required="required" />
             </div>
           </div>
@@ -66,17 +66,7 @@
           <div class="col-sm-3">
             <div class="form-group">
               <label for="genero" class="control-label">Genero</label>
-              <form:select id="genero" path="genero" class="form-control">
-                <form:option value="Accion">Accion</form:option>
-                <form:option value="Aventura">Aventura </form:option>
-                <form:option value="Clasicas">Clasicas</form:option>
-                <form:option value="Comedia Romantica">Comedia Romantica</form:option>
-                <form:option value="Drama">Drama</form:option>
-                <form:option value="Terror">Terror</form:option>
-                <form:option value="Infantil">Infantil</form:option>
-                <form:option value="Accion y Aventura">Accion y Aventura</form:option>
-                <form:option value="Romantica">Romantica</form:option>
-              </form:select>
+              <form:select id="genero" path="genero" class="form-control" items="${generos}" />
             </div>
           </div>
         </div>
