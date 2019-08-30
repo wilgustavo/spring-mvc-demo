@@ -1,22 +1,21 @@
 package com.pruebasjpa;
 
-import java.util.Arrays;
-
 import com.ma.app.repository.NoticiaRepository;
+import com.ma.app.util.FechaUtil;
 
 import org.springframework.context.support.FileSystemXmlApplicationContext;
 
 /**
- * AppFindAllById
+ * AppKeywordAnd
  */
-public class AppFindAllById {
+public class AppKeywordOr {
 
     public static void main(String[] args) {
         FileSystemXmlApplicationContext context = new FileSystemXmlApplicationContext("src/main/webapp/WEB-INF/spring/root-context.xml");
 
         NoticiaRepository noticiaRepository = context.getBean(NoticiaRepository.class);
         noticiaRepository
-            .findAllById(Arrays.asList(12, 4, 5, 6))
+            .findByEstatusOrFecha("Inactiva", FechaUtil.getISODate("2017-09-01"))
             .stream()
             .forEach(PrintUtil::imprimir);
 
