@@ -1,6 +1,7 @@
 package com.ma.app.model;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -24,6 +25,9 @@ public class Pelicula {
     @OneToOne()
     @JoinColumn(name = "idDetalle")
     private Detalle detalle;
+
+    @OneToMany(mappedBy = "pelicula", fetch = FetchType.EAGER)
+    private List<Horario> horarios;
 
     public Pelicula() {
         this.imagen = "cinema.png";
@@ -182,6 +186,14 @@ public class Pelicula {
 
     public void setDetalle(Detalle detalle) {
         this.detalle = detalle;
+    }
+
+    public List<Horario> getHorarios() {
+        return horarios;
+    }
+
+    public void setHorarios(List<Horario> horarios) {
+        this.horarios = horarios;
     }
 
     @Override

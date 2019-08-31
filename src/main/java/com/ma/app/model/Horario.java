@@ -5,16 +5,24 @@ import java.util.Date;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.*;
+
 /**
  * Horario
  */
+@Entity
+@Table(name = "Horarios")
 public class Horario {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date fecha;
     private String hora;
     private String sala;
     private double precio;
+    @ManyToOne
+    @JoinColumn(name = "idPelicula")
     private Pelicula pelicula;
 
     public int getId() {
