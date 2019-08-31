@@ -5,8 +5,14 @@ import java.util.Date;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "Peliculas")
 public class Pelicula {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String titulo;
     private int duracion;
@@ -15,6 +21,8 @@ public class Pelicula {
     private String imagen;
     private Date fechaEstreno;
     private String estatus;
+    @OneToOne()
+    @JoinColumn(name = "idDetalle")
     private Detalle detalle;
 
     public Pelicula() {
