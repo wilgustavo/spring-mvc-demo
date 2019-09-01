@@ -2,6 +2,7 @@ package com.ma.app.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -13,12 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.InitBinder;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -48,8 +44,14 @@ public class PeliculaController {
     }
 
     @GetMapping("/create")
-    public String crear(@ModelAttribute Pelicula pelicula, Model model) {
-        model.addAttribute("generos", peliculaService.buscarGeneros());
+    public String crear(@ModelAttribute Pelicula pelicula) {
+        return "peliculas/formPelicula";
+    }
+
+    @GetMapping("/edit/{id}")
+    public String editar(@PathVariable("id") int idPelicula, Model model) {
+        Pelicula pelicula = peliculaService.buscarPorId(idPelicula);
+        model.addAttribute("pelicula", pelicula);
         return "peliculas/formPelicula";
     }
 
@@ -72,4 +74,8 @@ public class PeliculaController {
         return "redirect:/peliculas/index";
     }
 
+    @ModelAttribute("generos")
+    public List<String> getGeneros() {
+        return peliculaService.buscarGeneros();
+    }
 }

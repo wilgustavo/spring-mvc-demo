@@ -12,8 +12,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Listado de Peliculas</title>
-    <spring:url value="/resources" var="urlPublic"></spring:url>
-    <spring:url value="/peliculas/create" var="formPelicula"></spring:url>
+    <spring:url value="/resources" var="urlPublic" />
+    <spring:url value="/peliculas/create" var="formPelicula" />
+    <spring:url value="/peliculas/edit" var="urlEdit" />
     <link href="${urlPublic}/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="${urlPublic}/bootstrap/css/theme.css" rel="stylesheet">
 
@@ -62,7 +63,7 @@
                   </c:choose>
                 </td>
                 <td>
-                    <a href="#" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a href="${urlEdit}/${pelicula.id}" class="btn btn-success btn-sm" role="button" title="Edit" ><span class="glyphicon glyphicon-pencil"></span></a>
                     <a href="#" class="btn btn-danger btn-sm" role="button" title="Eliminar" ><span class="glyphicon glyphicon-trash"></span></a>
                 </td>
             </tr>

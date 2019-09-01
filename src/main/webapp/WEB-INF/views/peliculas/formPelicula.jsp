@@ -142,6 +142,7 @@
         </div>
         <form:hidden path="id"/>
         <form:hidden path="imagen" />
+        <form:hidden path="detalle.id"/>
 
         <button type="submit" class="btn btn-danger" >Guardar</button>
       </form:form>
