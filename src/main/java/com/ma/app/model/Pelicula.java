@@ -22,7 +22,7 @@ public class Pelicula {
     private String imagen;
     private Date fechaEstreno;
     private String estatus;
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idDetalle")
     private Detalle detalle;
 

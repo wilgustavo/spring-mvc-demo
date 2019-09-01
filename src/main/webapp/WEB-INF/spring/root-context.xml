@@ -21,7 +21,7 @@
     </bean>
     <bean id="jpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="generateDdl" value="false" />
-        <property name="showSql" value="true"></property>
+        <property name="showSql" value="true"/>
         <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect" />
     </bean>
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
@@ -32,5 +32,4 @@
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
-
 </beans>
