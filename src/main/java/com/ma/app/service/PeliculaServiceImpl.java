@@ -1,14 +1,13 @@
 package com.ma.app.service;
 
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
+import com.ma.app.model.Pelicula;
 import com.ma.app.repository.PeliculaRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.ma.app.model.Pelicula;
-import com.ma.app.util.FechaUtil;
+import java.util.Arrays;
+import java.util.List;
 
 @Service
 public class PeliculaServiceImpl implements PeliculaService {
@@ -22,6 +21,11 @@ public class PeliculaServiceImpl implements PeliculaService {
     @Override
     public List<Pelicula> buscarTodas() {
         return peliculaRepository.findAll();
+    }
+
+    @Override
+    public Page<Pelicula> buscarTodas(Pageable page) {
+        return peliculaRepository.findAll(page);
     }
 
     @Override

@@ -13,6 +13,7 @@
     <meta name="author" content="">
     <title>Listado de Peliculas</title>
     <spring:url value="/resources" var="urlPublic" />
+    <spring:url value="/peliculas/index" var="urlPelicula" />
     <spring:url value="/peliculas/create" var="formPelicula" />
     <spring:url value="/peliculas/edit" var="urlEdit" />
     <spring:url value="/peliculas/delete" var="urlDelete" />
@@ -46,7 +47,7 @@
                 <th>Estatus</th>
                 <th>Opciones</th>
             </tr>
-            <c:forEach items="${peliculas}" var="pelicula">
+            <c:forEach items="${peliculas.content}" var="pelicula">
             <tr>
                 <td>${pelicula.titulo}</td>
                 <td>${pelicula.genero}</td>
@@ -70,6 +71,26 @@
             </tr>
             </c:forEach>
         </table>
+        <nav aria-label="">
+            <ul class="pager">
+               <c:choose>
+                  <c:when test="${peliculas.hasPrevious()}">
+                    <li><a href="${urlPelicula}?page=${peliculas.number -1 }">Anterior</a></li>
+                  </c:when>
+                  <c:otherwise>
+                    <li class="disabled"><a href="#">Anterior</a></li>
+                  </c:otherwise>
+               </c:choose>
+               <c:choose>
+                  <c:when test="${peliculas.hasNext()}">
+                    <li><a href="${urlPelicula}?page=${peliculas.number + 1 }">Siguiente</a></li>
+                  </c:when>
+                  <c:otherwise>
+                    <li class="disabled"><a href="#">Siguiente</a></li>
+                  </c:otherwise>
+               </c:choose>
+            </ul>
+        </nav>
       </div>
 
       <hr class="featurette-divider">
