@@ -35,6 +35,11 @@ public class PeliculaServiceImpl implements PeliculaService {
     }
 
     @Override
+    public void eliminar(int id) {
+        peliculaRepository.deleteById(id);
+    }
+
+    @Override
     public List<String> buscarGeneros() {
         return Arrays.asList("Accion", "Aventura", "Clasicas", "Comedia Romantica", "Drama", "Terror", "Infantil",
                 "Accion y Aventura", "Romantica", "Ciencia Ficcion");

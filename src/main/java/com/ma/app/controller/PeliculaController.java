@@ -55,6 +55,14 @@ public class PeliculaController {
         return "peliculas/formPelicula";
     }
 
+    @GetMapping("/delete/{id}")
+    public String eliminar(@PathVariable("id") int idPelicula, RedirectAttributes attributes) {
+        logger.log(Level.INFO, "Se elimina la pelicula {0}", idPelicula);
+        peliculaService.eliminar(idPelicula);
+        attributes.addFlashAttribute("mensaje", "El registro fue eliminado");
+        return "redirect:/peliculas/index";
+    }
+
     @PostMapping("/save")
     public String guardar(@ModelAttribute Pelicula pelicula, BindingResult result, RedirectAttributes attributes,
                           @RequestParam("archivoImagen") MultipartFile multipartFile,
