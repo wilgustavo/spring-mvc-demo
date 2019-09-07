@@ -13,5 +13,9 @@ public class HorarioFind {
             .findByFecha(FechaUtil.getISODate("2019-09-01"))
             .stream()
             .forEach(PrintUtil::imprimir);
+        repository
+            .findByPeliculaIdAndFechaOrderByHora(1, FechaUtil.getISODate("2019-09-01"))
+            .stream()
+            .forEach(PrintUtil::imprimir);
     }
 }

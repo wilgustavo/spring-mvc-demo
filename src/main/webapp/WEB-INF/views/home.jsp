@@ -65,7 +65,7 @@
           <span class="sr-only">Next</span>
         </a>
       </div><!-- /.carousel -->
-
+      </div>
       <div class="row page-header">
         <div class="col-lg-12">
           <h2 class="text text-center"><span class="label label-success">EN CARTELERA</span></h2>
