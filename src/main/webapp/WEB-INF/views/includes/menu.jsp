@@ -19,7 +19,7 @@
         <li><a href="${urlRoot}peliculas/index">Películas</a></li>
         <li><a href="${urlRoot}banners/index">Banners</a></li>
         <li><a href="#">Acerca</a></li>
-        <li><a href="#">Login</a></li>
+        <li><a href="${urlRoot}logout">Salir</a></li>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
