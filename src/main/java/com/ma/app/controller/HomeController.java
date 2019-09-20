@@ -73,6 +73,16 @@ public class HomeController {
         return "detalle";
     }
 
+    @GetMapping("/login")
+    public String mostrarLogin() {
+        return "formLogin";
+    }
+
+    @GetMapping("/admin")
+    public String mostrarPrincipalAdmin() {
+        return "admin";
+    }
+
     private void buscarPeliculasPorFecha(String fecha, Model model) {
         model.addAttribute("peliculas", peliculaService.buscarTodas());
         model.addAttribute("fechas", FechaUtil.getNextDays(MAX_FECHAS));

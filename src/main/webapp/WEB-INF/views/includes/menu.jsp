@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <spring:url value="/" var="urlRoot" />
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -16,10 +17,19 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="${urlRoot}peliculas/index">Películas</a></li>
-        <li><a href="${urlRoot}banners/index">Banners</a></li>
-        <li><a href="#">Acerca</a></li>
-        <li><a href="${urlRoot}logout">Salir</a></li>
+        <sec:authorize access="isAnonymous()">
+            <li><a href="#">Acerca</a></li>
+            <li><a href="${urlRoot}login">Login</a></li>
+        </sec:authorize>
+        <sec:authorize access="hasAnyAuthority('EDITOR')">
+            <li><a href="${urlRoot}peliculas/index">Películas</a></li>
+            <li><a href="${urlRoot}logout">Salir</a></li>
+        </sec:authorize>
+        <sec:authorize access="hasAnyAuthority('GERENTE')">
+            <li><a href="${urlRoot}peliculas/index">Películas</a></li>
+            <li><a href="${urlRoot}banners/index">Banners</a></li>
+            <li><a href="${urlRoot}logout">Salir</a></li>
+        </sec:authorize>
       </ul>
     </div><!--/.nav-collapse -->
   </div>
