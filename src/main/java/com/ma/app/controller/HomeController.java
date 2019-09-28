@@ -6,6 +6,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -79,7 +80,11 @@ public class HomeController {
     }
 
     @GetMapping("/admin")
-    public String mostrarPrincipalAdmin() {
+    public String mostrarPrincipalAdmin(Authentication authentication) {
+        logger.log(Level.INFO, "Nombre de usuario: {0}", authentication.getName());
+        authentication.getAuthorities().forEach(auth -> {
+            logger.log(Level.INFO, "Roles del usuario {0}", auth.getAuthority());
+        });
         return "admin";
     }
 
